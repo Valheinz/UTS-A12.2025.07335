@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panda Petshop Esa</title>
+
+  <!-- Bootstrap via link - butuh internet -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- CSS buatan sendiri (dipanggil SETELAH Bootstrap agar bisa menimpa) -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- HEADER: navbar Bootstrap (otomatis jadi hamburger di layar kecil) -->
+  <header>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top navbar-petshop">
+      <div class="container">
+        <a class="navbar-brand" href="#beranda">Panda Petshop</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-label="Buka menu">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="menu">
+          <ul class="navbar-nav ms-auto align-items-md-center">
+            <li class="nav-item"><a class="nav-link" href="#beranda">Beranda</a></li>
+            <li class="nav-item"><a class="nav-link" href="#produk">Produk</a></li>
+            <li class="nav-item"><a class="nav-link" href="#layanan">Layanan</a></li>
+            <li class="nav-item"><a class="nav-link" href="#booking">Booking</a></li>
+            <li class="nav-item">
+              <a class="nav-link" href="#keranjang">Keranjang
+                <span class="badge bg-warning text-dark" id="badge-keranjang">0</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero" id="beranda">
+      <div class="hero-teks">
+        <h1>Rumah Kedua untuk Sahabat Anabul</h1>
+        <p>Makanan, aksesoris, dan grooming terbaik untuk kucing dan anjing kesayangan Anda.</p>
+        <a href="#produk" class="btn btn-warning btn-lg">Belanja Sekarang</a>
+      </div>
+      <div class="hero-gambar">
+        <img src="images/Bulbul gokil.jpeg" alt="Foto anjing"
+        class="img-fluid rounded-circle foto-profil">
+      </div>
+    </section>
+
+    <!-- PRODUK (Grid buatan sendiri + filter) -->
+    <section class="bagian" id="produk">
+      <h2>Produk Pilihan</h2>
+
+      <div class="filter">
+        <button class="btn btn-outline-dark filter-btn active" data-filter="semua">Semua</button>
+        <button class="btn btn-outline-dark filter-btn" data-filter="kucing">Kucing</button>
+        <button class="btn btn-outline-dark filter-btn" data-filter="anjing">Anjing</button>
+        <button class="btn btn-outline-dark filter-btn" data-filter="aksesoris">Aksesoris</button>
+      </div>
+
+      <div class="grid-produk">
+        <article class="kartu" data-kategori="kucing">
+          <div class="gambar"><img src="images/cc ijo.png" alt="cc ijo"
+            class="img-fluid"></div>
+          <h3>Cat Choize Hijau</h3>
+          <p class="harga">Rp 20.000</p>
+          <button class="btn btn-dark tombol-beli" data-nama="Makanan Kucing 1 kg" data-harga="20000">Tambah</button>
+        </article>
+        <article class="kartu" data-kategori="kucing">
+          <div class="gambar"><img src="images/TOP litter.webp" alt="Cat litter"
+            class="img-fluid"></div>
+          <h3>TOP Cat Litter</h3>
+          <p class="harga">Rp 37.000</p>
+          <button class="btn btn-dark tombol-beli" data-nama="Pasir Kucing 5 L" data-harga="37000">Tambah</button>
+        </article>
+        <article class="kartu" data-kategori="anjing">
+          <div class="gambar"><img src="images/Nature Gourmet.webp" alt="Nature gourmet"
+            class="img-fluid"></div>
+          <h3>Nature Gourmet</h3>
+          <p class="harga">Rp 50.000</p>
+          <button class="btn btn-dark tombol-beli" data-nama="Makanan Anjing 1 kg" data-harga="50000">Tambah</button>
+        </article>
+        <article class="kartu" data-kategori="anjing">
+          <div class="gambar"><img src="images/Ball toy.png" alt="Ball toy"
+            class="img-fluid"></div>
+          <h3>Bola Mainan Anjing</h3>
+          <p class="harga">Rp 38.500</p>
+          <button class="btn btn-dark tombol-beli" data-nama="Bola Mainan Anjing" data-harga="38500">Tambah</button>
+        </article>
+        <article class="kartu" data-kategori="aksesoris">
+          <div class="gambar"><img src="images/kalung hewan.jpg" alt="kalung"
+            class="img-fluid"></div>
+          <h3>Kalung Hewan</h3>
+          <p class="harga">Rp 23.000</p>
+          <button class="btn btn-dark tombol-beli" data-nama="Kalung Hewan" data-harga="23000">Tambah</button>
+        </article>
+        <article class="kartu" data-kategori="aksesoris">
+          <div class="gambar"><img src="images/kasur hewan.jpg" alt="kasur"
+            class="img-fluid"></div>
+          <h3>Kasur Hewan</h3>
+          <p class="harga">Rp 57.300</p>
+          <button class="btn btn-dark tombol-beli" data-nama="Kasur Hewan" data-harga="57300">Tambah</button>
+        </article>
+      </div>
+    </section>
+
+    <!-- KERANJANG -->
+    <section class="bagian abu" id="keranjang">
+      <h2>Keranjang Belanja</h2>
+      <div class="kotak-keranjang">
+        <p id="keranjang-kosong">Keranjang masih kosong.</p>
+        <ul id="daftar-keranjang"></ul>
+        <p class="total">Total: <strong id="total-harga">Rp 0</strong></p>
+        <button class="btn btn-success me-2" id="beli">Beli Sekarang</button>
+        <button class="btn btn-outline-danger" id="kosongkan">Kosongkan Keranjang</button>
+        <p class="pesan-beli" id="pesan-beli"></p>
+      </div>
+    </section>
+
+    <!-- LAYANAN (Flexbox) -->
+    <section class="bagian" id="layanan">
+      <h2>Layanan Kami</h2>
+      <div class="baris-layanan">
+        <article class="item">
+          <h3>Grooming</h3>
+          <p>Mandi, potong bulu, dan potong kuku oleh groomer berpengalaman.</p>
+        </article>
+        <article class="item">
+          <h3>Penitipan</h3>
+          <p>Ruang nyaman dan aman saat Anda bepergian.</p>
+        </article>
+        <article class="item">
+          <h3>Konsultasi</h3>
+          <p>Tanya seputar kesehatan dan nutrisi hewan peliharaan.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- BOOKING: form dengan validasi JavaScript -->
+    <section class="bagian abu" id="booking">
+      <h2>Booking Grooming</h2>
+      <form id="form-booking" novalidate>
+        <label for="nama" class="form-label">Nama Pemilik</label>
+        <input type="text" class="form-control" id="nama" placeholder="Nama lengkap">
+        <small class="error" id="error-nama"></small>
+
+        <label for="hp" class="form-label">No. HP</label>
+        <input type="text" class="form-control" id="hp" placeholder="08xxxxxxxxxx">
+        <small class="error" id="error-hp"></small>
+
+        <label for="hewan" class="form-label">Jenis Hewan</label>
+        <select class="form-select" id="hewan">
+          <option value="">-- Pilih --</option>
+          <option value="Kucing">Kucing</option>
+          <option value="Anjing">Anjing</option>
+        </select>
+        <small class="error" id="error-hewan"></small>
+
+        <label for="tanggal" class="form-label">Tanggal Grooming</label>
+        <input type="date" class="form-control" id="tanggal">
+        <small class="error" id="error-tanggal"></small>
+
+        <label for="catatan" class="form-label">Catatan</label>
+        <textarea class="form-control" id="catatan" rows="3" placeholder="Contoh: kucing saya takut air"></textarea>
+
+        <button type="submit" class="btn btn-warning mt-3">Booking Sekarang</button>
+        <p class="sukses" id="sukses"></p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; A12.2025.07335 - Esa Cahya Krishna Putra</p>
+  </footer>
+
+  <!-- Bootstrap JS via link (dibutuhkan agar hamburger bisa dibuka) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>
